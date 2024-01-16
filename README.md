@@ -11,13 +11,11 @@ steps:
     id: checkout
     uses: actions/checkout@v4
 
-  - name: Run my Action
-    id: run-action
-    uses: actions/javascript-action@v1 # Commit with the `v1` tag
+  - name: serverless-devs deploy
+    uses: actions/setup-serverless@v1
     with:
-      milliseconds: 1000
-
-  - name: Print Output
-    id: output
-    run: echo "${{ steps.run-action.outputs.time }}"
+      account_id: ${{ secrets.ACCOUNT_ID }}
+      access_key_id: ${{ secrets.ACCESS_KEYID }}
+      access_key_secret: ${{ secrets.ACCESS_KEYSECRET }}
+      access: default
 ```
