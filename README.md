@@ -11,8 +11,14 @@ steps:
     id: checkout
     uses: actions/checkout@v4
 
-  - name: serverless-devs deploy
-    uses: actions/setup-serverless@v1
+  - name: Setup Node
+    id: setupnode
+    uses: actions/setup-node@v4
+    with:
+      node-version: 18
+  
+  - name: Setup Serverless-devs
+    uses: actions/setup-s-aliyun@v1
     with:
       account_id: ${{ secrets.ACCOUNT_ID }}
       access_key_id: ${{ secrets.ACCESS_KEYID }}
