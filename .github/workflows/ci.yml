@@ -37,7 +37,7 @@ jobs:
         id: setup-serverless-devs
         uses: ./
         with:
-          account_id: 1
-          access_key_id: 2
-          access_key_secret: 3
-          access: default
+          account_id: MOCK_ACCOUNT_ID
+          access_key_id: MOCK_KEY_ID
+          access_key_secret: MOCK_KEY_SECRET
+          access: MOCK_ACCESS_ALIAS
