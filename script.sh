@@ -1,6 +1,8 @@
-echo 'Checking nodejs version, serverless-dev required nodejs >= 14.14.0.'
+set -e # 报错后不继续执行
 LOCAL_VERSION=$(node -v)
 REQUIRED_VERSION='v14.14.0'
+echo 'Checking nodejs version, serverless-dev requires nodejs >= 14.14.0.'
+echo "Local nodejs's version is" $LOCAL_VERSION.
 function version_compare() {
     if [[ "$1" == "$2" ]]; then
         echo 0 # 本地版本等于要求版本
@@ -22,5 +24,5 @@ if [ "$result" == 0 ]; then
     echo 'The access has been configured automatically, use "s config get" to check.'
     echo '################################################'
 else
-    echo "Serverless-dev required nodejs >= 14.14.0, please update your local nodejs's version."
+    echo "Serverless-dev requires nodejs >= 14.14.0, please update your local nodejs's version."
 fi
