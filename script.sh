@@ -20,6 +20,7 @@ if [ "$result" == 0 ]; then
     echo '################################################'
     echo 'Serverless-devs has been installed successfully.'
     echo 'The access has been configured automatically, use "s config get" to check.'
+    echo '################################################'
 else
     echo "Serverless-dev required nodejs >= 14.14.0, please update your local nodejs's version."
 fi
