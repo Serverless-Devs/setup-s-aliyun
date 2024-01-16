@@ -15,7 +15,7 @@ steps:
     id: setupnode
     uses: actions/setup-node@v4
     with:
-      node-version: 18
+      node-version: 14.14.0
   
   - name: Setup Serverless-devs
     uses: actions/setup-s-aliyun@v1

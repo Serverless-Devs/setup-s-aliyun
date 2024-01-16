@@ -1,6 +1,6 @@
-echo 'Checking nodejs version, serverless-dev required nodejs >= 12.x.'
+echo 'Checking nodejs version, serverless-dev required nodejs >= 14.14.0.'
 LOCAL_VERSION=$(node -v)
-REQUIRED_VERSION='v12.0.0'
+REQUIRED_VERSION='v14.14.0'
 function version_compare() {
     if [[ "$1" == "$2" ]]; then
         echo 0 # 本地版本等于要求版本
@@ -14,7 +14,7 @@ function version_compare() {
 result=$(version_compare "$LOCAL_VERSION" "$REQUIRED_VERSION")
 if [ $result == 0 ]
 then
-    echo 'Serverless-devs installing.'
+    echo 'Nodejs checked, serverless-devs installing.'
     npm i @serverless-devs/s -g --registry=https://registry.npmmirror.com
     s config add --AccountID $1 --AccessKeyID $2 --AccessKeySecret $3 -a $4 -f
     echo '################################################'
@@ -22,5 +22,5 @@ then
     echo 'The access has been configured automatically, as shown bellow.'
     s config get -a $4
 else
-    echo "Serverless-dev required nodejs >= 12.x, please update local nodejs's version."
+    echo "Serverless-dev required nodejs >= 14.14.0, please update your local nodejs's version."
 fi
