@@ -4,6 +4,7 @@ REQUIRED_VERSION='v14.14.0'
 function version_compare() {
     if [[ "$1" == "$2" ]]; then
         echo 0 # 本地版本等于要求版本
+        return
     fi
     if [[ "$(printf '%s\n' "$1" "$2" | sort -V | head -n1)" == "$1" ]]; then
         echo 1 # 本地版本小于要求版本
