@@ -19,3 +19,9 @@ inputs:
     description: 'Access Alias Name'
     required: true
     default: 'default'
+
+runs:
+  using: "composite"
+  steps:
+    - run: ./script.sh ${{ inputs.account_id }} ${{ inputs.access_key_id }} ${{ inputs.access_key_secret }} ${{ inputs.access }}
+      shell: bash
