@@ -23,5 +23,5 @@ inputs:
 runs:
   using: "composite"
   steps:
-    - run: ./script.sh
+    - run: ./script.sh ${{ inputs.account_id }} ${{ access_key_id }} ${{ access_key_secret }} ${{ access }}
       shell: bash
