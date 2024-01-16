@@ -6,9 +6,9 @@ name: CI
 on:
   # Triggers the workflow on push or pull request events but only for the "main" branch
   push:
-    branches: [ "main" ]
+    branches: [ "main", "v0.0.1" ]
   pull_request:
-    branches: [ "main" ]
+    branches: [ "main", "v0.0.1" ]
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
@@ -29,8 +29,12 @@ jobs:
       - name: Run a one-line script
         run: echo Hello, world!
 
-      # Runs a set of commands using the runners shell
-      - name: Run a multi-line script
-        run: |
-          echo Add other actions to build,
-          echo test, and deploy your project.
+      # Runs my action
+      - name: Test Local Action
+        id: test-action
+        uses: ./
+        with:
+          account_id: 1
+          access_key_id: 2
+          access_key_secret: 3
+          access: default
