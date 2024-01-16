@@ -19,8 +19,7 @@ if [ "$result" == 0 ]; then
     s config add --AccountID $1 --AccessKeyID $2 --AccessKeySecret $3 -a $4 -f
     echo '################################################'
     echo 'Serverless-devs has been installed successfully.'
-    echo 'The access has been configured automatically, as shown bellow.'
-    s config get -a $4
+    echo 'The access has been configured automatically, use "s config get" to check.'
 else
     echo "Serverless-dev required nodejs >= 14.14.0, please update your local nodejs's version."
 fi
