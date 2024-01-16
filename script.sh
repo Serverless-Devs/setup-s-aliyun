@@ -12,8 +12,7 @@ function version_compare() {
     fi
 }
 result=$(version_compare "$LOCAL_VERSION" "$REQUIRED_VERSION")
-if [ $result == 0 ]
-then
+if [ "$result" == 0 ]; then
     echo 'Nodejs checked, serverless-devs installing.'
     npm i @serverless-devs/s -g --registry=https://registry.npmmirror.com
     s config add --AccountID $1 --AccessKeyID $2 --AccessKeySecret $3 -a $4 -f
