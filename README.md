@@ -10,12 +10,6 @@ steps:
   - name: Checkout
     id: checkout
     uses: actions/checkout@v4
-
-  - name: Setup Node
-    id: setupnode
-    uses: actions/setup-node@v4
-    with:
-      node-version: 14.14.0
   
   - name: Setup Serverless-devs
     uses: actions/setup-s-aliyun@v1
