@@ -19,9 +19,13 @@ inputs:
     description: 'Access Alias Name'
     required: true
     default: 'default'
+  version:
+    description: 'Serverless-devs Version, v3.0.0 as default.'
+    required: false
+    default: 'v3.0.0'
 
 runs:
   using: "composite"
   steps:
-    - run: ./script.sh ${{ inputs.account_id }} ${{ inputs.access_key_id }} ${{ inputs.access_key_secret }} ${{ inputs.access }}
+    - run: ./script.sh ${{ inputs.account_id }} ${{ inputs.access_key_id }} ${{ inputs.access_key_secret }} ${{ inputs.access }} ${{ inputs.version }}
       shell: bash
