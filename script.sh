@@ -1,3 +1,5 @@
+# unused
+
 set -e # 报错后不继续执行
 if ! which node > /dev/null; then
     echo "Node is not installed, serverless-dev requires nodejs >= 14.14.0."
@@ -22,11 +24,11 @@ else
     if [ "$result" == 0 ]; then
         echo 'Nodejs checked, serverless-devs installing.'
         npm i @serverless-devs/s -g --registry=https://registry.npmmirror.com
+        echo '################################################'
         s config add --AccountID $1 --AccessKeyID $2 --AccessKeySecret $3 -a $4 -f
         echo '################################################'
         echo 'Serverless-devs has been installed successfully.'
         echo 'The access has been configured automatically, use "s config get" to check.'
-        echo '################################################'
     else
         echo "Serverless-dev requires nodejs >= 14.14.0, please update your local nodejs's version."
     fi
