@@ -6,9 +6,9 @@ name: CI
 on:
   # Triggers the workflow on push or pull request events but only for the "main" branch
   push:
-    branches: [ "main", "v0.0.1" ]
+    branches: [ "main", "setup-s" ]
   pull_request:
-    branches: [ "main", "v0.0.1" ]
+    branches: [ "main", "setup-s" ]
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
@@ -34,9 +34,20 @@ jobs:
 
       # Runs my action
       - name: Setup serverless-devs
-        id: setup-serverless-devs
+        id: setup-s-aliyun
         uses: ./
         with:
+          provider: aliyun
+          account_id: MOCK_ACCOUNT_ID
+          access_key_id: MOCK_KEY_ID
+          access_key_secret: MOCK_KEY_SECRET
+          access: MOCK_ACCESS_ALIAS
+          
+      - name: Setup serverless-devs
+        id: setup-s-tencent
+        uses: ./
+        with:
+          provider: tencent
           account_id: MOCK_ACCOUNT_ID
           access_key_id: MOCK_KEY_ID
           access_key_secret: MOCK_KEY_SECRET

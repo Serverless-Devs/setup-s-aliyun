@@ -1,24 +1,28 @@
-name: 'Setup Aliyun Serverless-Devs'
-description: 'An Action for Setup Aliyun Serverless-Devs'
+name: 'Setup for Serverless-Devs'
+description: 'An Action for Setup Serverless-Devs and Different Provider's Authorization Config'
 author: 'heimanba'
 branding:
   icon: 'heart'
   color: 'red'
 
 inputs:
-  account_id: 
-    description: 'Aliyun Main Account ID'
+  provider: 
+    description: 'Provider Name (aliyun/aws/tencent/huawei)'
     required: true
-  access_key_id: 
-    description: 'Aliyun Access Key ID'
-    required: true
-  access_key_secret: 
-    description: 'Aliyun Access Key Secret'
-    required: true
+    default: 'aliyun'
   access:
     description: 'Access Alias Name'
     required: true
-    default: 'default'
+    default: ${{ inputs.provider }}_access
+  account_id:
+    description: 'Main Account ID'
+    required: false
+  access_key_id:
+    description: 'Access Key ID'
+    required: false
+  access_key_secret:
+    description: 'Access Key Secret'
+    required: false
   version:
     description: 'Serverless-devs Version, 3.0.0 as default.'
     required: false
@@ -27,5 +31,18 @@ inputs:
 runs:
   using: "composite"
   steps:
-    - run: ./script.sh ${{ inputs.account_id }} ${{ inputs.access_key_id }} ${{ inputs.access_key_secret }} ${{ inputs.access }} ${{ inputs.version }}
+    - run: ./script.sh ${{inputs.provider}} ${{ inputs.version }} ${{ inputs.account_id }} ${{ inputs.access_key_id }} ${{ inputs.access_key_secret }} ${{ inputs.access }}
       shell: bash
+      if: ${{ inputs.provider === 'aliyun' }}
+
+    - run: ./script.sh ${{inputs.provider}} ${{ inputs.version }} ${{ inputs.account_id }} ${{ inputs.access_key_id }} ${{ inputs.access_key_secret }} ${{ inputs.access }}
+      shell: bash
+      if: ${{ inputs.provider === 'aws' }}
+
+    - run: ./script.sh ${{inputs.provider}} ${{ inputs.version }} ${{ inputs.account_id }} ${{ inputs.access_key_id }} ${{ inputs.access_key_secret }} ${{ inputs.access }}
+      shell: bash
+      if: ${{ inputs.provider === 'tencent' }}
+
+    - run: ./script.sh ${{inputs.provider}} ${{ inputs.version }} ${{ inputs.account_id }} ${{ inputs.access_key_id }} ${{ inputs.access_key_secret }} ${{ inputs.access }}
+      shell: bash
+      if: ${{ inputs.provider === 'huawei' }}

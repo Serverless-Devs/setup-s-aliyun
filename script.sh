@@ -2,7 +2,7 @@
 
 # 执行命令并捕获输出
 VERSION_OUTPUT=$(s -v)
-version=$5
+version=$2
 set -e # 报错后不继续执行
 
 # 检查输出是否包含版本号的格式
@@ -11,13 +11,20 @@ if [[ $VERSION_OUTPUT ]]; then
   echo "Version output is valid: $EXTRACTED_CONTENT"
 else
   echo 'Serverless-devs installing.'
-  curl "https://images.devsapp.cn/bin/s/${version}" --output /usr/local/bin/s
+  curl "https://images.devsapp.cn/bin/s/v${version}" --output /usr/local/bin/s
   chmod 777 /usr/local/bin/s
   echo 'Serverless-devs has been installed successfully.'
 fi
 
 echo '################################################'
-s config add --AccountID $1 --AccessKeyID $2 --AccessKeySecret $3 -a $4 -f
+if [[ $1 == "aliyun" ]]; then
+  s config add --AccountID $3 --AccessKeyID $4 --AccessKeySecret $5 -a $6 -f
+elif [[ $1 == "aws" ]]; then
+  s config add --AccessKeyID $3 --SecretAccessKey $4 -a $5 -f
+elif [[ $1 == "huawei" ]]; then
+  s config add --AccessKeyID $3 --SecretAccessKey $4 -a $5 -f
+elif [[ $1 == "tencent" ]]; then
+  s config add --AccountID $3 --SecretID $4 --SecretKey $5 -a $6 -f
 echo '################################################'
 echo 'The access has been configured automatically, use "s config get" to check.'
 
