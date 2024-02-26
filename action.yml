@@ -20,9 +20,9 @@ inputs:
     required: true
     default: 'default'
   version:
-    description: 'Serverless-devs Version, v3.0.0 as default.'
+    description: 'Serverless-devs Version, 3.0.0 as default.'
     required: false
-    default: 'v3.0.0'
+    default: '3.0.0'
 
 runs:
   using: "composite"
