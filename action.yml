@@ -33,16 +33,13 @@ runs:
   steps:
     - run: ./script.sh ${{inputs.provider}} ${{ inputs.version }} ${{ inputs.account_id }} ${{ inputs.access_key_id }} ${{ inputs.access_key_secret }} ${{ inputs.access }}
       shell: bash
-      if: ${{ inputs.provider === 'aliyun' }}
-
+      if: ${{inputs.provider}} == 'aliyun'
     - run: ./script.sh ${{inputs.provider}} ${{ inputs.version }} ${{ inputs.account_id }} ${{ inputs.access_key_id }} ${{ inputs.access_key_secret }} ${{ inputs.access }}
       shell: bash
-      if: ${{ inputs.provider === 'aws' }}
-
+      if: inputs.provider == 'aws'
     - run: ./script.sh ${{inputs.provider}} ${{ inputs.version }} ${{ inputs.account_id }} ${{ inputs.access_key_id }} ${{ inputs.access_key_secret }} ${{ inputs.access }}
       shell: bash
-      if: ${{ inputs.provider === 'tencent' }}
-
+      if: inputs.provider === 'tencent'
     - run: ./script.sh ${{inputs.provider}} ${{ inputs.version }} ${{ inputs.account_id }} ${{ inputs.access_key_id }} ${{ inputs.access_key_secret }} ${{ inputs.access }}
       shell: bash
-      if: ${{ inputs.provider === 'huawei' }}
+      if: inputs.provider === 'huawei'
