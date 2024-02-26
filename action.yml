@@ -13,7 +13,7 @@ inputs:
   access:
     description: 'Access Alias Name'
     required: true
-    default: ${{ inputs.provider }}_access
+    default: 'default'
   account_id:
     description: 'Main Account ID'
     required: false
@@ -33,7 +33,7 @@ runs:
   steps:
     - run: ./script.sh ${{inputs.provider}} ${{ inputs.version }} ${{ inputs.account_id }} ${{ inputs.access_key_id }} ${{ inputs.access_key_secret }} ${{ inputs.access }}
       shell: bash
-      if: ${{inputs.provider}} == 'aliyun'
+      if: inputs.provider == 'aliyun'
     - run: ./script.sh ${{inputs.provider}} ${{ inputs.version }} ${{ inputs.account_id }} ${{ inputs.access_key_id }} ${{ inputs.access_key_secret }} ${{ inputs.access }}
       shell: bash
       if: inputs.provider == 'aws'
