@@ -1,5 +1,5 @@
 name: 'Setup for Serverless-Devs'
-description: 'An Action for Setup Serverless-Devs and Different Provider's Authorization Config'
+description: 'An Action for Setup Serverless-Devs and Different Provider Authorization Config'
 author: 'heimanba'
 branding:
   icon: 'heart'
