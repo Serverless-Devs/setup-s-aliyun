@@ -10,6 +10,10 @@ inputs:
     description: 'Provider Name (aliyun/aws/tencent/huawei)'
     required: true
     default: 'aliyun'
+  version:
+    description: 'Serverless-devs Version, 3.0.0 as default.'
+    required: false
+    default: '3.0.0'
   access:
     description: 'Access Alias Name'
     required: true
@@ -23,10 +27,16 @@ inputs:
   access_key_secret:
     description: 'Access Key Secret'
     required: false
-  version:
-    description: 'Serverless-devs Version, 3.0.0 as default.'
+  secret_access_key:
+    description: 'Secret Access Key'
     required: false
-    default: '3.0.0'
+  secret_id:
+    description: 'Secret ID'
+    required: false
+  secret_key:
+    description: 'Secret Key'
+    required: false
+
 
 runs:
   using: "composite"
@@ -34,12 +44,12 @@ runs:
     - run: ./script.sh ${{inputs.provider}} ${{ inputs.version }} ${{ inputs.account_id }} ${{ inputs.access_key_id }} ${{ inputs.access_key_secret }} ${{ inputs.access }}
       shell: bash
       if: inputs.provider == 'aliyun'
-    - run: ./script.sh ${{inputs.provider}} ${{ inputs.version }} ${{ inputs.account_id }} ${{ inputs.access_key_id }} ${{ inputs.access_key_secret }} ${{ inputs.access }}
+    - run: ./script.sh ${{inputs.provider}} ${{ inputs.version }} ${{ inputs.access_key_id }} ${{ inputs.secret_access_key }} ${{ inputs.access }}
       shell: bash
       if: inputs.provider == 'aws'
-    - run: ./script.sh ${{inputs.provider}} ${{ inputs.version }} ${{ inputs.account_id }} ${{ inputs.access_key_id }} ${{ inputs.access_key_secret }} ${{ inputs.access }}
+    - run: ./script.sh ${{inputs.provider}} ${{ inputs.version }} ${{ inputs.account_id }} ${{ inputs.access_key_id }} ${{ inputs.secret_key }} ${{ inputs.access }}
       shell: bash
       if: inputs.provider == 'tencent'
-    - run: ./script.sh ${{inputs.provider}} ${{ inputs.version }} ${{ inputs.account_id }} ${{ inputs.access_key_id }} ${{ inputs.access_key_secret }} ${{ inputs.access }}
+    - run: ./script.sh ${{inputs.provider}} ${{ inputs.version }} ${{ inputs.access_key_id }} ${{ inputs.secret_access_key }} ${{ inputs.access }}
       shell: bash
       if: inputs.provider == 'huawei'
