@@ -21,10 +21,10 @@ if [[ $1 == "aliyun" ]]; then
   s config add --AccountID $3 --AccessKeyID $4 --AccessKeySecret $5 -a $6 -f
 elif [[ $1 == "aws" ]]; then
   s config add --AccessKeyID $3 --SecretAccessKey $4 -a $5 -f
-elif [[ $1 == "huawei" ]]; then
-  s config add --AccessKeyID $3 --SecretAccessKey $4 -a $5 -f
 elif [[ $1 == "tencent" ]]; then
   s config add --AccountID $3 --SecretID $4 --SecretKey $5 -a $6 -f
+elif [[ $1 == "huawei" ]]; then
+  s config add --AccessKeyID $3 --SecretAccessKey $4 -a $5 -f
 fi
 echo '################################################'
 echo 'The access has been configured automatically, use "s config get" to check.'

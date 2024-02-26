@@ -33,7 +33,7 @@ jobs:
           node-version: 14.14.0
 
       # Runs my action
-      - name: Setup serverless-devs
+      - name: Setup serverless-devs for aliyun
         id: setup-s-aliyun
         uses: ./
         with:
@@ -41,14 +41,33 @@ jobs:
           account_id: MOCK_ACCOUNT_ID
           access_key_id: MOCK_KEY_ID
           access_key_secret: MOCK_KEY_SECRET
-          access: MOCK_ACCESS_ALIAS
-          
-      - name: Setup serverless-devs
+          access: MOCK_ACCESS_ALIAS_ALIYUN
+
+      - name: Setup serverless-devs for aws
+        id: setup-s-aws
+        uses: ./
+        with:
+          provider: tencent
+          access_key_id: MOCK_KEY_ID
+          secret_access_key: MOCK_Secret_Access_Key
+          access: MOCK_ACCESS_ALIAS_AWS
+
+      - name: Setup serverless-devs for tencent
         id: setup-s-tencent
         uses: ./
         with:
           provider: tencent
           account_id: MOCK_ACCOUNT_ID
+          secret_id: MOCK_SECRET_ID
+          secret_key: MOCK_SECRET_KEY
+          access: MOCK_ACCESS_ALIAS_TENCENT
+
+      - name: Setup serverless-devs for huawei
+        id: setup-s-huawei
+        uses: ./
+        with:
+          provider: huawei
           access_key_id: MOCK_KEY_ID
-          access_key_secret: MOCK_KEY_SECRET
-          access: MOCK_ACCESS_ALIAS
+          secret_access_key: MOCK_Secret_Access_Key
+          access: MOCK_ACCESS_ALIAS_HUAWEI
+
