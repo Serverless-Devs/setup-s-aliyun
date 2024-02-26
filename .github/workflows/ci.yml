@@ -47,7 +47,7 @@ jobs:
         id: setup-s-aws
         uses: ./
         with:
-          provider: tencent
+          provider: aws
           access_key_id: MOCK_KEY_ID
           secret_access_key: MOCK_Secret_Access_Key
           access: MOCK_ACCESS_ALIAS_AWS
